@@ -25,3 +25,6 @@ for x in h.headers:
 # Modify the headers user-agent
 headers = {'User-Agent': 'Mobile'}
 
+url2 = 'http://httpbin.org/headers'
+rh = requests.get(url2, headers=headers)
+print(rh.text)
