@@ -1,16 +1,27 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+#Use the Request library
+import requests
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Set the target webpage
+url = 'http://172.18.58.80/varsity/'
+webpage = requests.get(url)
 
+# This will get the full webpage in text
+print(webpage.text)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# Get and print the status code
+print("Status code:")
+print("\t *", webpage.status_code)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Get the headers
+h = requests.head(url)
+print("Header:")
+print("*********")
+# To print line by line
+for x in h.headers:
+    print("\t ", x, ":", h.headers[x])
+    print("*********")
+
+# Modify the headers user-agent
+headers = {'User-Agent': 'Mobile'}
+
